@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.main-header {
+    background-color: rgb(32, 27, 18);
+    color: rgb(226, 213, 205);
+    font-size: 20px;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+}
