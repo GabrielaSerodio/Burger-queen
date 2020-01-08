@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import './style.css';
-
-
-const Menu = () => 
-    <header>
+function Nav () {
+    return(
         <nav>
             <ul>
                 <li><Link to="/login">Login Usuários</Link></li>
@@ -14,8 +11,7 @@ const Menu = () =>
 
             </ul>
         </nav>
-    </header>;
+    );
+}
 
-export default Menu;
-
-
+export default Nav;

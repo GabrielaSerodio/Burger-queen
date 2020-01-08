@@ -1,6 +1,11 @@
 .button{
-    background-color: yellow;
+    background-color: #dfa014;
+    height: 52px;
+    width: 50%;
     padding: 8px;
     border-radius: 4px;
-    
+    font-size: 22px;
+    color: #b42828;
+    font-weight: bold;
+    margin-top: 4%;
 }
