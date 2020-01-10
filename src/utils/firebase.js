@@ -1,5 +1,6 @@
-import firebase from 'firebase';
-import 'firebase/firestore'
+import app from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firebase-firestore'
 
 
 const firebaseConfig = {
@@ -13,9 +14,20 @@ const firebaseConfig = {
     measurementId: "G-XG86G92FB1"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+class Firebase {
+    constructor() {
+        app.initializeApp(firebaseConfig)
+        this.auth = app.auth()
+        this.db = app.firestore()
+    }
 
-const dataBase = firebase.firestore();
+    signIn(email, passw) {
+        return this.auth.signInWithEmailAndPassword(email, passw)
+    }
 
-export default dataBase;
+    logout() {
+        return this.auth.signOut()
+    }
+}
+
+export default new Firebase();

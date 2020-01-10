@@ -8,9 +8,12 @@ function Input(props) {
             type={props.type}
             placeholder={props.placeholder}
             maxlength={props.maxlength}
+            onChange={props.onChange}
+            value={props.value}
         >
         </input>
     );
 }
 
 export default Input;
+

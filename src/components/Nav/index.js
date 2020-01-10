@@ -5,10 +5,8 @@ function Nav () {
     return(
         <nav>
             <ul>
-                <li><Link to="/login">Login Usuários</Link></li>
-                <li><Link to="/kitchen">Acesso Cozinha</Link></li>
-                <li><Link to="/hall">Acesso Salão</Link></li>
-
+                <li><Link to="/kitchen">Cozinha</Link></li>
+                <li><Link to="/hall">Salão</Link></li>
             </ul>
         </nav>
     );
