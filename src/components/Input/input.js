@@ -7,7 +7,7 @@ function Input(props) {
             className={props.className}
             type={props.type}
             placeholder={props.placeholder}
-            maxlength={props.maxlength}
+            maxLength={props.maxLength}
             onChange={props.onChange}
             value={props.value}
         >

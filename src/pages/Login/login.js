@@ -44,7 +44,7 @@ const Login = (props) => {
                             onChange={e => setEmail(e.target.value)}
                             type="email" 
                             placeholder="email" 
-                            maxlength="30" 
+                            maxLength="30" 
                         />
                         <Input 
                             className="input input-login" 
