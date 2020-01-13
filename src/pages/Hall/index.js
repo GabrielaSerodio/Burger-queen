@@ -50,7 +50,7 @@ function Hall() {
     const  sendToFirebase = (e) => {
         e.preventDefault();
         
-        if(name == null)
+        if(name == null || table == null)
             return alert("Preencha os dados do cliente!")
     
         firestore().collection('request').doc().set({
