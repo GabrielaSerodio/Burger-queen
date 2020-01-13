@@ -1,34 +1,37 @@
 import React, { useEffect , useState } from 'react';
+import { firestore } from 'firebase';
+import '../Hall/hall.css';
 import Button from '../../components/Button/index.js';
 import Cards from '../../components/Cards/index';
 import Menu from '../../components/Menu/index';
 import Input from '../../components/Input/input';
-import { firestore } from 'firebase';
-import '../Hall/hall.css';
-
+import Received from '../../components/Received/received';
 
 function Hall() {
+
     const [menu, setMenu] = useState([]);
     const [order, setOrder] = useState([]);
+    const [breakfast, setBreakfast] = useState(null);
+    const [drinks, setDrinks] = useState(null);
     const [modal, setModal] = useState({status: false});
     const [options, setOptions] = useState("");
     const [extras, setExtras] = useState("");
     const [name, setName] = useState("");
     const [table, setTable] = useState("");
 
+    useEffect(() => { 
+        firestore().collection('menu').get().then((snapshot) => {
+            snapshot.docs.map((doc) => setMenu ((current) => [...current, doc.data()]))
+        })
+    },[]); 
 
-    useEffect(() => {
-        firestore().collection('menu').get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
-                    setMenu((currentState) => [...currentState, doc.data()]);
-                });
-                })
-    }, []);
-    
     const addOrder = (menuItem) => {
-        setOrder([...order, menuItem])
-    } 
+        setOrder([...order, menuItem])   
+    }
+
+    const onDelete = key => {
+        setOrder(order.filter((x,i) => i !== key))
+    }
 
     const verifyOptions = (menuItem) => {
         if(menuItem.options.length !== 0){
@@ -42,52 +45,59 @@ function Hall() {
         const updatedItem = {...modal.item, name: `${modal.item.name} ${options} ${extras}`};
         addOrder(updatedItem);
         setModal({status: false});
-    }  
-    console.log(menu);
+    }
+
+    const  sendToFirebase = (e) => {
+        e.preventDefault();
+        
+        if(name == null)
+            return alert("Preencha os dados do cliente!")
+    
+        firestore().collection('request').doc().set({
+            name: name,
+            table: table,
+            order: order,
+            status: 'pending',
+            time:   new Date().toLocaleString('pt-BR')
+    
+        })
+        .then(alert("Pedido Enviado!"))
+    }
 
     return (
         <main>
-            <Menu />
-            <section className="data-client">
-                <Input 
-                    className="input input-name" 
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    type="text" 
-                    placeholder="Nome cliente" 
-                    maxlength="30" 
-                />
-                <Input 
-                    className="input input-table" 
-                    value={table}
-                    onChange={e => setTable(e.target.value)}
-                    type="number" 
-                    placeholder="Mesa" 
-                />
-            </section>
+            <header>
+                <Menu />
+            </header>
             <section className="buttons-products">
                 <Button
-                    className="button"
+                    className="btn"
                     title="Cardápio Geral"
-                    onClick={() => alert("ae mulekote")}
+                    onClick={()=>{setBreakfast(false)}}
                 />
                 <Button 
-                    className="button"
+                    className="btn"
+                    id="breakfast"
                     title="Café da manhã"
-                    onClick={() => alert("SOU FODA DIGDIN DIGDIN")}
+                    onClick={()=>{setBreakfast(true)}}
+                />
+                <Button 
+                    className="btn"
+                    id="drinks"
+                    title="Bebidas"
+                    onClick={() =>{setDrinks(true)}}
                 />
             </section>
             <section className="container-cards">
-                {menu.map((menuItem, index) => {
-                    return (    
-                        <>                    
+                {menu.filter((i)=>{return i.breakfast === breakfast}).map((menuItem, index) => {
+                    return (                      
                         <Cards 
                             key={index} {...menuItem} 
                             handleClick={() => {verifyOptions(menuItem)}} />
-                        </>
                     )
                 })}
             </section>
+            <Received {...{name: name, order: order, table: table}} onDelete = {onDelete}/>
             <div>
                 { modal.status ? (
                     <div>
@@ -105,31 +115,40 @@ function Hall() {
                                     <label>{elem}</label>
                                 </div>
                             ))}
-                        
+                            <Button 
+                                className="button"
+                                title="Adicionar Extras"
+                                onClick={addOptionsExtras}
+                            />
                     </div>
-                ): false   }
+                ): false }
             </div>
-            <Button 
-                className="button"
-                title="Adicionar Extras"
-                onClick={() => alert("SOU FODA DIGDIN DIGDIN")}
-            />
-            <section className="request">
-                <h1>Meu pedido</h1>
-                {order.map(elem =>  
-                    <p>1 x {elem.name}</p>
-                )}
-                <Button 
-                    title="Enviar Pedido"
-                    type="submit"
-                    className="button btn-request"
-                    // onClick={}
-                />  
-            </section>
+            <aside className="data-client">
+                <form className="form-request" >
+                    <Input 
+                        className="input input-name" 
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        type="text" 
+                        placeholder="Nome cliente" 
+                        maxLength="30" 
+                    />
+                    <Input 
+                        className="input input-table" 
+                        value={table}
+                        onChange={e => setTable(e.target.value)}
+                        type="number" 
+                        placeholder="Número da mesa" 
+                    />
+                        <Button 
+                            title="Enviar Pedido"
+                            className="button btn-request"
+                            onClick={sendToFirebase}
+                        />  
+                </form>
+            </aside>
         </main>
-    );
+    )
 }
 
-
 export default Hall;
-

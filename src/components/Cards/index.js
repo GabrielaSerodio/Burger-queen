@@ -3,7 +3,7 @@ import './cards.css';
 
 function Cards(props) {
     return (
-            <section onCLick={props.handleClick} className="cards">
+            <section onClick={props.handleClick} className="cards">
                 <p>{props.name}</p>
                 <p>R${props.price},00</p>
             </section>
@@ -13,4 +13,4 @@ function Cards(props) {
 
 export default Cards;
 
-{/* <img class='img-bar' src='${menu.data().image}' /> */}
+// {/* <img class='img-bar' src='${menu.data().image}' /> */}
