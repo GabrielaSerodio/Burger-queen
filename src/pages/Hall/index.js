@@ -51,9 +51,8 @@ function Hall() {
     const  sendToFirebase = (e) => {
         e.preventDefault();
         
-        if(name == null || table == null)
+        if(setName === "" || setTable === "")
             return alert("Preencha os dados do cliente!")
-    
         firestore().collection('request').doc().set({
             name: name,
             table: table,
@@ -66,83 +65,84 @@ function Hall() {
     }
 
     return (
-        <main>
+        <body>
             <header>
                 <Menu />
             </header>
-            <section className="buttons-products">
-                <Button
-                    className="btn"
-                    title="Cardápio Geral"
-                    onClick={()=>{setBreakfast(false)}}
-                />
-                <Button 
-                    className="btn"
-                    id="breakfast"
-                    title="Café da manhã"
-                    onClick={()=>{setBreakfast(true)}}
-                />
-            </section>
-            <section className="container-cards">
-                {menu.filter((i)=>{return i.breakfast === breakfast}).map((menuItem, index) => {
-                    return (                      
-                        <Cards 
-                            key={index} {...menuItem} 
-                            handleClick={() => {verifyOptions(menuItem)}} />
-                    )
-                })}
-            </section>
-            <Received {...{name: name, order: order, table: table}} onDelete = {onDelete}/>
-            <div>
-                { modal.status ? (
-                    <div>
-                        <h3>Extras</h3>
-                            {modal.item.extras.map((elem, index) => (
-                                <div key={index}>
-                                    <input onChange={() => setExtras(elem)} type="radio" name="extras" value={elem}/>
-                                    <label>{elem}</label>
-                                </div>
-                            ))}
-                        <h3>Opções</h3>
-                            {modal.item.options.map((elem, index) => (
-                                <div key={index}>
-                                    <input onChange={() => setOptions(elem)} type="radio" name="options" value={elem}/>
-                                    <label>{elem}</label>
-                                </div>
-                            ))}
-                            <Button 
-                                className="button"
-                                title="Adicionar Extras"
-                                onClick={addOptionsExtras}
+            <main>
+                <section className="container-hall">
+                    <section className="buttons-products">
+                        <Button
+                            className="button btn-menu"
+                            title="Jantar"
+                            onClick={()=>{setBreakfast(false)}}
+                        />
+                        <Button 
+                            className="button btn-breakfast"
+                            id="breakfast"
+                            title="Café da manhã"
+                            onClick={()=>{setBreakfast(true)}}
+                        />
+                    </section>
+                        <section className="cards-products">
+                            {menu.filter((i)=>{return i.breakfast === breakfast}).map((menuItem, index) => {
+                                return (                      
+                                    <Cards 
+                                        key={index} {...menuItem} 
+                                        handleClick={() => {verifyOptions(menuItem)}} />
+                                )
+                            })}
+                        </section>
+                        <form className="form-request" >
+                            <h2>Resumo do pedido</h2>
+                            <Input 
+                                className="input input-name" 
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+                                type="text" 
+                                placeholder="Nome cliente" 
+                                maxLength="30" 
                             />
-                    </div>
-                ): false }
-            </div>
-            <aside className="data-client">
-                <form className="form-request" >
-                    <Input 
-                        className="input input-name" 
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                        type="text" 
-                        placeholder="Nome cliente" 
-                        maxLength="30" 
-                    />
-                    <Input 
-                        className="input input-table" 
-                        value={table}
-                        onChange={e => setTable(e.target.value)}
-                        type="number" 
-                        placeholder="Número da mesa" 
-                    />
-                    <Button 
-                        title="Enviar Pedido"
-                        className="button btn-request"
-                        onClick={sendToFirebase}
-                    />  
-                </form>
-            </aside>
-        </main>
+                            <Input 
+                                className="input input-table" 
+                                value={table}
+                                onChange={e => setTable(e.target.value)}
+                                type="number" 
+                                placeholder="Número da mesa" 
+                            />
+                                { modal.status ? (
+                                    <div className="extras">
+                                        <h3 className="text-modal">Extras</h3>
+                                            {modal.item.extras.map((elem, index) => (
+                                                <div key={index}>
+                                                    <input onChange={() => setExtras(elem)} className="text-modal" type="radio" name="extras" value={elem}/>
+                                                    <label className="text-modal">{elem}</label>
+                                                </div>
+                                            ))}
+                                        <h3 className="h3-options text-modal">Opções</h3>
+                                            {modal.item.options.map((elem, index) => (
+                                                <div key={index}>
+                                                    <input onChange={() => setOptions(elem)} className="text-modal" type="radio" name="options" value={elem}/>
+                                                    <label className="text-modal">{elem}</label>
+                                                </div>
+                                            ))}
+                                            <Button 
+                                                className="button btn-extras"
+                                                title="Adicionar Extras"
+                                                onClick={addOptionsExtras}
+                                            />
+                                    </div>
+                                ): false }
+                            <Received {...{name: name, order: order, table: table}} onDelete = {onDelete}/>
+                            <Button 
+                                title="Enviar Pedido"
+                                className="button btn-request"
+                                onClick={sendToFirebase}
+                            />  
+                        </form>
+                </section>    
+            </main>
+        </body>
     )
 }
 
