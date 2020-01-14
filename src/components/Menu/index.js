@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 
 import './style.css';
 
-
 const Menu = () => 
     <header>
-        <nav>
-            <ul>
-                <li><Link to="/">Sair</Link></li>
-                <li><Link to="/kitchen">Acesso Cozinha</Link></li>
-                <li><Link to="/hall">Acesso Salão</Link></li>
+        <nav className="navbar">
+            <ul className="navbar-list">
+                <a href><li className="navbar-item"><Link to="/">Sair</Link></li></a>
+                <a href><li className="navbar-item"><Link to="/hall">Acesso Salão</Link></li></a>
+                <a href><li className="navbar-item"><Link to="/kitchen">Acesso Cozinha</Link></li></a>
             </ul>
         </nav>
-    </header>;
+    </header>
 
 export default Menu;
 

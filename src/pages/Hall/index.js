@@ -1,6 +1,8 @@
 import React, { useEffect , useState } from 'react';
 import { firestore } from 'firebase';
+
 import '../Hall/hall.css';
+
 import Button from '../../components/Button/index.js';
 import Cards from '../../components/Cards/index';
 import Menu from '../../components/Menu/index';
@@ -12,7 +14,6 @@ function Hall() {
     const [menu, setMenu] = useState([]);
     const [order, setOrder] = useState([]);
     const [breakfast, setBreakfast] = useState(null);
-    const [drinks, setDrinks] = useState(null);
     const [modal, setModal] = useState({status: false});
     const [options, setOptions] = useState("");
     const [extras, setExtras] = useState("");
@@ -81,12 +82,6 @@ function Hall() {
                     title="Café da manhã"
                     onClick={()=>{setBreakfast(true)}}
                 />
-                <Button 
-                    className="btn"
-                    id="drinks"
-                    title="Bebidas"
-                    onClick={() =>{setDrinks(true)}}
-                />
             </section>
             <section className="container-cards">
                 {menu.filter((i)=>{return i.breakfast === breakfast}).map((menuItem, index) => {
@@ -140,11 +135,11 @@ function Hall() {
                         type="number" 
                         placeholder="Número da mesa" 
                     />
-                        <Button 
-                            title="Enviar Pedido"
-                            className="button btn-request"
-                            onClick={sendToFirebase}
-                        />  
+                    <Button 
+                        title="Enviar Pedido"
+                        className="button btn-request"
+                        onClick={sendToFirebase}
+                    />  
                 </form>
             </aside>
         </main>

@@ -3,8 +3,6 @@ import React from 'react';
 const Received = (props) => {
     return (
         <div>
-            <p>Nome: {props.name}</p>
-            <p>Mesa: {props.table}</p>
             <ol>
             {props.order.map((item, i) =>
                 <li key= {i}>
@@ -15,7 +13,7 @@ const Received = (props) => {
                 )}
             </ol>
             <section>
-                <p>Total = {props.order.reduce((acc, cur) => acc + cur.price,0)},00</p>
+                <h2>Total R${props.order.reduce((acc, cur) => acc + cur.price,0)},00</h2>
             </section>
         </div>
     );
