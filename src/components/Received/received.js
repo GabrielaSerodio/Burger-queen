@@ -1,19 +1,20 @@
 import React from 'react';
 
+import '../Received/received.css';
+
 const Received = (props) => {
     return (
         <div>
-            <ol>
+            <ul className="desc-product">
             {props.order.map((item, i) =>
-                <li key= {i}>
-                {item.name}
-                {item.table}
-                <button onClick = {()=> {props.onDelete(i)}}>x</button>
+                <li className="item-product" key= {i}>
+                1x {item.name} <strong>R${item.price},00</strong>
+                <button className="btn-delete" onClick = {()=> {props.onDelete(i)}}>❌</button>
                 </li>
                 )}
-            </ol>
+            </ul>
             <section>
-                <h2>Total R${props.order.reduce((acc, cur) => acc + cur.price,0)},00</h2>
+                <h2 className="h2-total">Total R${props.order.reduce((acc, cur) => acc + cur.price,0)},00</h2>
             </section>
         </div>
     );

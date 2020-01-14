@@ -1,0 +1,16 @@
+.btn-delete{
+    background: none;
+}
+
+.h2-total{
+    margin-top: 6%;
+    text-align: center;
+}
+
+.desc-product{
+    margin-top: 6%;
+    background-color: lightgoldenrodyellow;
+    width: auto;
+    border-radius: 4px;
+    opacity: 0.9;
+}

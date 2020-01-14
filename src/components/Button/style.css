@@ -1,11 +1,13 @@
 .button{
     background-color: #dfa014;
-    height: 52px;
-    width: 50%;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 30px;
+    border-radius: 2px;
     color: #b42828;
     font-weight: bold;
-    margin-top: 4%;
 }
+
+/* 
+height: 52px;
+font-size: 30px;
+width: 50%;
+padding: 8px;
+margin-top: 4%; */

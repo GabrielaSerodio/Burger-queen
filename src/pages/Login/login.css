@@ -23,6 +23,9 @@
 
 .input-login, .btn-login {
     width: 60vw;
+    height: 5vh;
+    font-size: 18px;
+    margin-top: 6%;
 }
 
 

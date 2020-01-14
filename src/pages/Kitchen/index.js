@@ -19,12 +19,11 @@ function Kitchen (props) {
         <main>
             <header>
             <Menu />
-            <h1>Cozinha Burguinho</h1>
             <Title value="Pedidos para serem executados:"/>
             </header>
             <section className="container-request">
                 {request.map((order, index) => 
-                    <Request creationDate = {order.creationDate}
+                    <Request 
                         key = {index}                       
                         time = {order.time}
                         table = {order.table}

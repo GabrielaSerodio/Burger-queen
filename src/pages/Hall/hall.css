@@ -1,0 +1,87 @@
+.container-hall{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* filho btns */
+.buttons-products{
+    display: flex;
+    flex-direction: column;
+    width: 12%;
+    padding: 1%;
+}
+
+.form-request{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+    width: 47%;
+}
+
+/* filho cards */
+.cards-products{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+.input-name, .input-table{
+    width: 98%;
+    height: 4vh;
+    font-size: 18px;
+    margin-top: 5%;
+}
+
+.extras{
+    width: 100%;
+    margin-top: 6%;
+}
+
+.h3-options{
+    margin-top: 4%;
+}
+
+.text-modal{
+    color: #dfa014;
+    font-weight: bold;
+}
+
+.item-product{
+    color: #d2850f;
+    max-width: 94%;
+    font-weight: bolder;
+    font-size: 16px;
+    margin-top: 2%;
+    padding: 2%;
+}
+
+.btn-extras, .btn-request, .btn-breakfast, .btn-menu{
+    padding: 3%;
+    font-size: 21px;
+}
+
+.btn-extras{
+    width: 100%;
+    margin-top: 5%;
+    height: 5vh;
+    font-size: 20px;
+} 
+
+.btn-request{
+    width: 99%;
+    height: 5vh;
+}
+
+.btn-menu{
+    margin-top: 12%;
+}
+
+.btn-menu, .btn-breakfast{
+    width: 105%;
+}
+
+.btn-breakfast{
+    margin-top: 8%;
+}
