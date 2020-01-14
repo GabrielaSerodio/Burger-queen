@@ -2,7 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15%;
+}
+
+.img{
+    margin-top: 3%;
+    width: 88%;
 }
 
 .header{
@@ -13,8 +17,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60vw;
-    margin-top: 6%;
+    width: 48vw;
+    margin-top: 4%;
 }
 
 .input-login, .btn-login {
