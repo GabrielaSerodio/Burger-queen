@@ -14,14 +14,13 @@
 
 Burguinho é um aplicativo para restaurantes, que assessora todo o processo dos pedidos que são realizados pelos clientes. Desde a escolha dos itens, execução da cozinha até o valor final da comanda. Este projeto foi desenvolvido em React Hooks, JavaScript ES6, etc.
 
-
 ## 2. Para acessar o projeto
 
-Dados de acesso ao salão.
+Dados de acesso ao salão -->
   e-mail: lindalva@salao.com
    senha: lindalva@123
    
-Dados de acesso a cozinha.
+Dados de acesso a cozinha -->
   e-mail: patricia@cozinha.com
    senha: patricia@123
 
