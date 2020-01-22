@@ -1,13 +1,11 @@
 import React, { useEffect , useState } from 'react';
 import { firestore } from 'firebase';
-
-import '../Hall/hall.css';
-
 import Button from '../../components/Button/index.js';
 import Cards from '../../components/Cards/index';
 import Menu from '../../components/Menu/index';
 import Input from '../../components/Input/input';
 import Received from '../../components/Received/received';
+import '../Hall/hall.css';
 
 function Hall() {
 
@@ -89,7 +87,8 @@ function Hall() {
                                 return (                      
                                     <Cards 
                                         key={index} {...menuItem} 
-                                        handleClick={() => {verifyOptions(menuItem)}} />
+                                        handleClick={() => {verifyOptions(menuItem)}}
+                                    />
                                 )
                             })}
                         </section>
@@ -138,6 +137,7 @@ function Hall() {
                                 title="Enviar Pedido"
                                 className="button btn-request"
                                 onClick={sendToFirebase}
+                                disabled={order.length === 0}
                             />  
                         </form>
                 </section>    

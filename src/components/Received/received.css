@@ -1,5 +1,9 @@
 .btn-delete{
     background: none;
+    width: 10%;
+    font-size: 121%;
+    height: 4vh;
+    border: none;
 }
 
 .h2-total{

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from 'react';    
 import './style.css';
 
 function Button(props) {
@@ -7,6 +6,7 @@ function Button(props) {
         <button 
             className={props.className}
             onClick={props.onClick}
+            disabled={props.disabled}          
             >
             {props.title}
         </button>

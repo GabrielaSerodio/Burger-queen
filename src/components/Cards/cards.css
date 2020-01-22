@@ -1,15 +1,34 @@
-
-.cards{
-    width: 181px;
+.container-cards{
+    width: 86%;
+    display: flex;
     background: #bf6f27;
     mix-blend-mode: normal;
-    box-shadow: 0px 4px 4px rgba(224, 161, 89, 0.84), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    height: 24vh;
+    box-shadow: 0px 4px 4px rgba(212, 123, 22, 0.84), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: inherit;
+    height: 4vh;
     margin-left: 7%;
     margin-top: 4%;
-    color: #ffd39c;
+    color: #3a1818;
     font-size: 19px;
     padding: 3%;
     font-weight: bolder;
+}
+
+.sec-desc{
+    width: 70%;
+}
+
+.sec-btn{
+    width: 14%;
+    margin-left: 9%;
+}
+
+.btn-add-product{
+    border: none;
+    background: #bf6f27;
+}
+
+.img-add{
+    width: 48%;
+    opacity: 0.7;
 }
